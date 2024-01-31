@@ -18,11 +18,5 @@
     "psr-4": {
       "KafkaClient\\": "src/"
     }
-  },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "git@github.com:beta-eto-code/mb.client.git"
-    }
-  ]
+  }
 }
