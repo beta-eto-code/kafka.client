@@ -116,6 +116,11 @@ class Client implements ClientInterface
     private function consumeMessage(ConsumerTopic $topic, int $partition, int $timeout): ?MessageInterface
     {
         $message = $topic->consume($partition, $timeout);
+        if ($message === null) {
+            $topic->consumeStop($partition);
+            return null;
+        }
+
         switch ($message->err) {
             case RD_KAFKA_RESP_ERR_NO_ERROR:
                 return new Message($message);
